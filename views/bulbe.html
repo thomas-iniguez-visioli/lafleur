@@ -3,11 +3,12 @@
     <%- include('./head.html'); %>
     
     <body>
-        <header>
-            <h1>société lafleur</h1>
-            <h2>fleur d'ornement pour jardin</h2>
-        </header>
+      
         <div class="main">
+            <header>
+                <h1>société lafleur</h1>
+                <h2>fleur d'ornement pour jardin</h2>
+            </header>
             <div class="link">
       
                     <a href="/"><h2>acceuil</h2></a>
@@ -20,11 +21,14 @@
             </div>
            
             <div class="page">
-                <p>"dite le avec des fleur "</p>
-                <img src="images/ACCUEIL.JPG">
-                <p>appelée notre service commercial au</p> <a href="tel:0298846574">0298846574</a><p>pour recevoir un bon de commande</p>
+                <table>
+                    <th><td>photo</td><td>reférence</td><td>Désignation</td><td>prix</td></th>
+                    <%for(var i=0;i<produit.length;i++){%>
+                    <tr><td><img src="<%= produit[i].photo %>"> </td><td><%= produit[i].reference %></td><td><%= produit[i].designation %></td><td><%= produit[i].prix %></td></tr><%}%>
+                    </table>
             </div>
+            <footer>mention légale</footer>
         </div>
-        <footer></footer>
+        
     </body>
 </html>

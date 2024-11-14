@@ -26,3 +26,14 @@ div.main{
   border: 1px solid black;
   border-color: black;
 }
+header{
+  text-align: start;
+  grid-column: fit-content/1;
+}
+footer{
+  text-align: start;
+  grid-column: fit-content/1;
+}
+td{
+  border: 1px solid black;
+}
