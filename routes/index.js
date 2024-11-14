@@ -5,7 +5,15 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express', users:[
     {
-    link:"/",name:"bulbe"
+    link:"/bulbe",name:"bulbe"
+  },{
+    link:"/",name:"bulbe2"
+  }
+] });
+});router.get('/bulbe', function(req, res, next) {
+  res.render('index', { title: 'Express', users:[
+    {
+    link:"/bulbe",name:"bulbe"
   },{
     link:"/",name:"bulbe2"
   }
