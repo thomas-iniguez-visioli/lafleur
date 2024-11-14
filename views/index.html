@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html >
-    <head>
-        <title>
-            société lafleur
-        </title>
-    </head>
+    <%- include('./head.html'); %>
+    
     <body>
         <header>
             <h1>société lafleur</h1>
             <h2>fleur d'ornement pour jardin</h2>
         </header>
+        <div class="main">
+            <div class="link">
+      
+                    <a href="/"><h2>acceuil</h2></a>
+                    
+             
+                    <% users.forEach(function(user){ %>
+                        <a href="<%-user.link  %>"><h2><%-user.name  %></h2></a>
+                       <% }); %>
+                
+            </div>
+           
+            <div class="page">
+                "dite le avec des fleur "
+                <img src="images/ACCUEIL.JPG">
+            </div>
+        </div>
+        <footer></footer>
     </body>
 </html>
     

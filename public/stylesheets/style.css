@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+div{
+  
+  grid-template-columns: 1fr 1fr;
+  
+}
+div.main{
+  display: grid;
+  border: 1px solid black;
+  border-color: black;
+}.menu{
+
+  border: 1px solid black;
+  
+}.page{
+  border: 1px solid black;
+}.link{
+  display: table-column;
+  border: 1px solid black;
+  border-color: black;
+}
