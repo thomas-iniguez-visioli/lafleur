@@ -24,19 +24,19 @@ let type=[
       ],produit:[
         {
           photo:"/images/bulbes_begonia.jpg",
-          reference:"1",
-          designation:"bégonia",
-          prix:0
+          reference:"b01",
+          designation:"3 bulbes de bégonia",
+          prix:5
         }, {
           photo:"/images/bulbes_dahlia.jpg",
-          reference:"1",
-          designation:"dahlia",
-          prix:0
+          reference:"b02",
+          designation:"10 bulbe de dalhias",
+          prix:12
         }, {
           photo:"/images/bulbes_glaieul.jpg",
-          reference:"1",
-          designation:"glaieul",
-          prix:0
+          reference:"b03",
+          designation:"50 glaieul",
+          prix:9
         }
       ]
 }
@@ -54,19 +54,19 @@ let type=[
     ],produit:[
       {
         photo:"/images/massif_marguerite.jpg",
-        reference:"1",
-        designation:"bégonia",
-        prix:0
+        reference:"m01",
+        designation:"lot de 3 marguerite",
+        prix:5
+      }, {
+        photo:"/images/massif_pensee.jpg",
+        reference:"m02",
+        designation:"pour un bouquet de 6 pensée ",
+        prix:6
       }, {
         photo:"/images/massif_melange.jpg",
-        reference:"1",
-        designation:"dahlia",
-        prix:0
-      }, {
-        photo:"/images/massif_pensée.jpg",
-        reference:"1",
-        designation:"glaieul",
-        prix:0
+        reference:"m03",
+        designation:"mélange variée de 10 plante a massif",
+        prix:15
       }
     ]
 }
@@ -83,20 +83,20 @@ let type=[
     }
     ],produit:[
       {
-        photo:"/images/rosiers_arbuste.jpg",
-        reference:"1",
-        designation:"bégonia",
-        prix:0
-      }, {
-        photo:"/images/rosiers_gdfleur.jpg",
-        reference:"1",
-        designation:"dahlia",
-        prix:0
+        photo:"/images/rosiers_gdefleur.jpg",
+        reference:"r01",
+        designation:"un pied spécial grandes fleur ",
+        prix:20
       }, {
         photo:"/images/rosiers_parfum.jpg",
-        reference:"1",
-        designation:"glaieul",
-        prix:0
+        reference:"r02",
+        designation:"une variété séléctionée pour son parfum",
+        prix:9
+      }, {
+        photo:"/images/rosiers_arbuste.jpg",
+        reference:"r03",
+        designation:"rosiers arbuste",
+        prix:8
       }
     ]
 }

@@ -1,7 +1,6 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  display: 100%;
 }
 
 a {
@@ -9,7 +8,7 @@ a {
 }
 div{
   
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 1fr;
   
 }
 div.main{
@@ -23,13 +22,10 @@ div.main{
 }.page{
   border: 1px solid black;
   text-align: center;
-  grid-column: 2/4;
- display:fit-content
 }.link{
   display: table-column;
   border: 1px solid black;
   border-color: black;
-  grid-column: 1;
 }
 header{
   text-align: center;
@@ -39,17 +35,6 @@ footer{
   text-align: center;
   grid-column: fit-content/1;
 }
-tr{
-  border: 1px solid black;
-  
-}
 td{
   border: 1px solid black;
-  
-  
-}
-table{
-  width: fit-content;
-  height: fit-content;
-  display: fit-content;
 }

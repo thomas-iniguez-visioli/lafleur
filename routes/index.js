@@ -37,36 +37,36 @@ router.get('/', function(req, res, next) {
     photo:"/images/massif_marguerite.jpg",
     reference:"m01",
     designation:"lot de 3 marguerite",
-    prix:0
+    prix:5
   }, {
     photo:"/images/massif_pensee.jpg",
     reference:"m02",
-    designation:"dahlia",
-    prix:0
+    designation:"pour un bouquet de 6 pensée ",
+    prix:6
   }, {
     photo:"/images/massif_melange.jpg",
     reference:"m03",
-    designation:"glaieul",
-    prix:0
+    designation:"mélange variée de 10 plante a massif",
+    prix:15
   }
 ]});
 });router.get('/rosiers', function(req, res, next) {
   res.render('bulbe', { title: 'Express', users:page,produit:[
   {
-    photo:"/images/bulbes_begonia.jpg",
+    photo:"/images/rosiers_gdefleur.jpg",
     reference:"r01",
-    designation:"bégonia",
-    prix:0
+    designation:"un pied spécial grandes fleur ",
+    prix:20
   }, {
-    photo:"/images/bulbes_dahlia.jpg",
+    photo:"/images/rosiers_parfum.jpg",
     reference:"r02",
-    designation:"dahlia",
-    prix:0
+    designation:"une variété séléctionée pour son parfum",
+    prix:9
   }, {
-    photo:"/images/bulbes_glaieul.jpg",
+    photo:"/images/rosiers_arbuste.jpg",
     reference:"r03",
-    designation:"glaieul",
-    prix:0
+    designation:"rosiers arbuste",
+    prix:8
   }
 ]});
 });
