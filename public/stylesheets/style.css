@@ -41,7 +41,7 @@ footer{
 }
 tr{
   border: 1px solid black;
-  
+  display: calc(100%);
 }
 td{
   border: 1px solid black;
