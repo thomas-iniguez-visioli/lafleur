@@ -19,17 +19,23 @@
                     <a href="/"><h2>Accueil</h2></a>
                     
              
-                    <% users.forEach(function(user){ %>
-                        <a href="<%-user.link  %>"><h2><%-user.name  %></h2></a>
-                       <% }); %>
+                    
+                        <a href="/bulbe"><h2>Bulbe</h2></a>
+                       
+                        <a href="/massif"><h2>Massif</h2></a>
+                       
+                        <a href="/rosiers"><h2>Rosiers</h2></a>
+                       
                 
             </div>
            
             <div class="page">
                 <table>
                     <td>photo</td><td>reférence</td><td>Désignation</td><td>prix</td>
-                    <%for(var i=0;i<produit.length;i++){%>
-                    <tr><td><img src="<%= produit[i].photo %>"> </td><td><%= produit[i].reference %></td><td><%= produit[i].designation %></td><td><%= produit[i].prix %></td></tr><%}%>
+                    
+                    <tr><td><img src="/images/bulbes_begonia.jpg"> </td><td>1</td><td>bégonia</td><td>0</td></tr>
+                    <tr><td><img src="/images/bulbes_dahlia.jpg"> </td><td>1</td><td>dahlia</td><td>0</td></tr>
+                    <tr><td><img src="/images/bulbes_glaieul.jpg"> </td><td>1</td><td>glaieul</td><td>0</td></tr>
                     </table>
             </div>
             <footer>mention légale</footer>

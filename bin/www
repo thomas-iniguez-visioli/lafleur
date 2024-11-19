@@ -7,7 +7,115 @@
 var app = require('../app');
 var debug = require('debug')('lafleur:server');
 var http = require('http');
+const ejs=require("ejs")
+const fs =require("fs")
+let type=[
+  {
+    name:"bulbe",
+    option:{
+      users:[
+        {
+        link:"/bulbe",name:"Bulbe"
+      },{
+        link:"/massif",name:"Massif"
+      },{
+        link:"/rosiers",name:"Rosiers"
+      }
+      ],produit:[
+        {
+          photo:"/images/bulbes_begonia.jpg",
+          reference:"1",
+          designation:"bégonia",
+          prix:0
+        }, {
+          photo:"/images/bulbes_dahlia.jpg",
+          reference:"1",
+          designation:"dahlia",
+          prix:0
+        }, {
+          photo:"/images/bulbes_glaieul.jpg",
+          reference:"1",
+          designation:"glaieul",
+          prix:0
+        }
+      ]
+}
+},{
+  name:"massif",
+  option:{
+    users:[
+      {
+      link:"/bulbe",name:"Bulbe"
+    },{
+      link:"/massif",name:"Massif"
+    },{
+      link:"/rosiers",name:"Rosiers"
+    }
+    ],produit:[
+      {
+        photo:"/images/massif_marguerite.jpg",
+        reference:"1",
+        designation:"bégonia",
+        prix:0
+      }, {
+        photo:"/images/massif_melange.jpg",
+        reference:"1",
+        designation:"dahlia",
+        prix:0
+      }, {
+        photo:"/images/massif_pensée.jpg",
+        reference:"1",
+        designation:"glaieul",
+        prix:0
+      }
+    ]
+}
+},{
+  name:"rosiers",
+  option:{
+    users:[
+      {
+      link:"/bulbe",name:"Bulbe"
+    },{
+      link:"/massif",name:"Massif"
+    },{
+      link:"/rosiers",name:"Rosiers"
+    }
+    ],produit:[
+      {
+        photo:"/images/rosiers_arbuste.jpg",
+        reference:"1",
+        designation:"bégonia",
+        prix:0
+      }, {
+        photo:"/images/rosiers_gdfleur.jpg",
+        reference:"1",
+        designation:"dahlia",
+        prix:0
+      }, {
+        photo:"/images/rosiers_parfum.jpg",
+        reference:"1",
+        designation:"glaieul",
+        prix:0
+      }
+    ]
+}
+}
 
+]
+const build=ejs.compile(fs.readFileSync("./views/bulbe.html").toString())
+type.map((nam)=>{
+  fs.writeFileSync(`./v1/${nam.name}.html`,build(nam.option))
+})
+fs.writeFileSync("./v1/accueil.html",ejs.compile(fs.readFileSync("./views/index.html").toString())({users:[
+  {
+  link:"/bulbe",name:"Bulbe"
+},{
+  link:"/massif",name:"Massif"
+},{
+  link:"/rosiers",name:"Rosiers"
+}
+]}))
 /**
  * Get port from environment and store in Express.
  */

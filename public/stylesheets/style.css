@@ -21,17 +21,18 @@ div.main{
   
 }.page{
   border: 1px solid black;
+  text-align: center;
 }.link{
   display: table-column;
   border: 1px solid black;
   border-color: black;
 }
 header{
-  text-align: start;
+  text-align: center;
   grid-column: fit-content/1;
 }
 footer{
-  text-align: start;
+  text-align: center;
   grid-column: fit-content/1;
 }
 td{
