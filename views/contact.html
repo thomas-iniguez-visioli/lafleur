@@ -20,14 +20,16 @@
                 
             </div>
            
-            <div class="page">
-                <p>"dite le avec des fleur "</p>
-                <img src="/images/ACCUEIL.JPG">
-                <p>appelée notre service commercial au</p> <a href="tel:0298846574">0298846574</a><p>pour recevoir un bon de commande</p>
-            </div>
-            <%- include('./footer.html'); %>
+          <form action="/contact"method="POST">
+            <p>votre mail</p>
+            <input type="email" name="mail" id="mail">
+            <p>votre message</p>
+            <input type="text" name="message" id="message">
+            <input type="submit">
+          </form>
+            
         </div>
-        
+        <%- include('./footer.html'); %>
     </body>
 </html>
     

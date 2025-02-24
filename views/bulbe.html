@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html >
-   
+    <%- include('./head.html'); %>
     
     <body>
       
@@ -27,7 +27,7 @@
                     <tr><td><img src="<%= produit[i].photo %>"> </td><td><%= produit[i].reference %></td><td><%= produit[i].designation %></td><td><%= produit[i].prix %></td></tr><%}%>
                     </table>
             </div>
-            <footer>mention légale</footer>
+            <%- include('./footer.html'); %>
         </div>
         
     </body>

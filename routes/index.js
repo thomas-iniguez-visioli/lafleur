@@ -70,5 +70,12 @@ router.get('/', function(req, res, next) {
   }
 ]});
 });
+router.get('/contact', function(req, res, next) {
+  res.render('contact', { title: 'Express', users:page });
+});
+router.post('/contact', function(req, res, next) {
+  console.log(req.body)
+  res.redirect("/")
+});
 
 module.exports = router;
