@@ -9,113 +9,113 @@ var debug = require('debug')('lafleur:server');
 var http = require('http');
 const ejs=require("ejs")
 const fs =require("fs")
-let type=[
-  {
-    name:"bulbe",
-    option:{
-      users:[
-        {
-        link:"/bulbe",name:"Bulbe"
-      },{
-        link:"/massif",name:"Massif"
-      },{
-        link:"/rosiers",name:"Rosiers"
-      }
-      ],produit:[
-        {
-          photo:"/images/bulbes_begonia.jpg",
-          reference:"b01",
-          designation:"3 bulbes de bégonia",
-          prix:5
-        }, {
-          photo:"/images/bulbes_dahlia.jpg",
-          reference:"b02",
-          designation:"10 bulbe de dalhias",
-          prix:12
-        }, {
-          photo:"/images/bulbes_glaieul.jpg",
-          reference:"b03",
-          designation:"50 glaieul",
-          prix:9
-        }
-      ]
-}
-},{
-  name:"massif",
-  option:{
-    users:[
-      {
-      link:"/bulbe",name:"Bulbe"
-    },{
-      link:"/massif",name:"Massif"
-    },{
-      link:"/rosiers",name:"Rosiers"
-    }
-    ],produit:[
-      {
-        photo:"/images/massif_marguerite.jpg",
-        reference:"m01",
-        designation:"lot de 3 marguerite",
-        prix:5
-      }, {
-        photo:"/images/massif_pensee.jpg",
-        reference:"m02",
-        designation:"pour un bouquet de 6 pensée ",
-        prix:6
-      }, {
-        photo:"/images/massif_melange.jpg",
-        reference:"m03",
-        designation:"mélange variée de 10 plante a massif",
-        prix:15
-      }
-    ]
-}
-},{
-  name:"rosiers",
-  option:{
-    users:[
-      {
-      link:"/bulbe",name:"Bulbe"
-    },{
-      link:"/massif",name:"Massif"
-    },{
-      link:"/rosiers",name:"Rosiers"
-    }
-    ],produit:[
-      {
-        photo:"/images/rosiers_gdefleur.jpg",
-        reference:"r01",
-        designation:"un pied spécial grandes fleur ",
-        prix:20
-      }, {
-        photo:"/images/rosiers_parfum.jpg",
-        reference:"r02",
-        designation:"une variété séléctionée pour son parfum",
-        prix:9
-      }, {
-        photo:"/images/rosiers_arbuste.jpg",
-        reference:"r03",
-        designation:"rosiers arbuste",
-        prix:8
-      }
-    ]
-}
-}
+// let type=[
+//   {
+//     name:"bulbe",
+//     option:{
+//       users:[
+//         {
+//         link:"/bulbe",name:"Bulbe"
+//       },{
+//         link:"/massif",name:"Massif"
+//       },{
+//         link:"/rosiers",name:"Rosiers"
+//       }
+//       ],produit:[
+//         {
+//           photo:"/images/bulbes_begonia.jpg",
+//           reference:"b01",
+//           designation:"3 bulbes de bégonia",
+//           prix:5
+//         }, {
+//           photo:"/images/bulbes_dahlia.jpg",
+//           reference:"b02",
+//           designation:"10 bulbe de dalhias",
+//           prix:12
+//         }, {
+//           photo:"/images/bulbes_glaieul.jpg",
+//           reference:"b03",
+//           designation:"50 glaieul",
+//           prix:9
+//         }
+//       ]
+// }
+// },{
+//   name:"massif",
+//   option:{
+//     users:[
+//       {
+//       link:"/bulbe",name:"Bulbe"
+//     },{
+//       link:"/massif",name:"Massif"
+//     },{
+//       link:"/rosiers",name:"Rosiers"
+//     }
+//     ],produit:[
+//       {
+//         photo:"/images/massif_marguerite.jpg",
+//         reference:"m01",
+//         designation:"lot de 3 marguerite",
+//         prix:5
+//       }, {
+//         photo:"/images/massif_pensee.jpg",
+//         reference:"m02",
+//         designation:"pour un bouquet de 6 pensée ",
+//         prix:6
+//       }, {
+//         photo:"/images/massif_melange.jpg",
+//         reference:"m03",
+//         designation:"mélange variée de 10 plante a massif",
+//         prix:15
+//       }
+//     ]
+// }
+// },{
+//   name:"rosiers",
+//   option:{
+//     users:[
+//       {
+//       link:"/bulbe",name:"Bulbe"
+//     },{
+//       link:"/massif",name:"Massif"
+//     },{
+//       link:"/rosiers",name:"Rosiers"
+//     }
+//     ],produit:[
+//       {
+//         photo:"/images/rosiers_gdefleur.jpg",
+//         reference:"r01",
+//         designation:"un pied spécial grandes fleur ",
+//         prix:20
+//       }, {
+//         photo:"/images/rosiers_parfum.jpg",
+//         reference:"r02",
+//         designation:"une variété séléctionée pour son parfum",
+//         prix:9
+//       }, {
+//         photo:"/images/rosiers_arbuste.jpg",
+//         reference:"r03",
+//         designation:"rosiers arbuste",
+//         prix:8
+//       }
+//     ]
+// }
+// }
 
-]
-const build=ejs.compile(fs.readFileSync("./views/bulbe.html").toString())
-type.map((nam)=>{
-  fs.writeFileSync(`./v1/${nam.name}.html`,build(nam.option))
-})
-fs.writeFileSync("./v1/accueil.html",ejs.compile(fs.readFileSync("./views/index.html").toString())({users:[
-  {
-  link:"/bulbe",name:"Bulbe"
-},{
-  link:"/massif",name:"Massif"
-},{
-  link:"/rosiers",name:"Rosiers"
-}
-]}))
+// ]
+// const build=ejs.compile(fs.readFileSync("./views/bulbe.html").toString())
+// type.map((nam)=>{
+//   fs.writeFileSync(`./v1/${nam.name}.html`,build(nam.option))
+// })
+// fs.writeFileSync("./v1/accueil.html",ejs.compile(fs.readFileSync("./views/index.html").toString())({users:[
+//   {
+//   link:"/bulbe",name:"Bulbe"
+// },{
+//   link:"/massif",name:"Massif"
+// },{
+//   link:"/rosiers",name:"Rosiers"
+// }
+// ]}))
 /**
  * Get port from environment and store in Express.
  */
@@ -194,5 +194,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
 }
