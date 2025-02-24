@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const fs=require("fs")
 const page =[
   {
   link:"/bulbe",name:"Bulbe"
@@ -71,10 +72,11 @@ router.get('/', function(req, res, next) {
 ]});
 });
 router.get('/contact', function(req, res, next) {
-  res.render('contact', { title: 'Express', users:page });
+  res.render('contact', { title: 'page de contact', users:page });
 });
 router.post('/contact', function(req, res, next) {
   console.log(req.body)
+  fs.appendFileSync("./contact",`[${req.body.mail}]:${req.body.message}`)
   res.redirect("/")
 });
 
