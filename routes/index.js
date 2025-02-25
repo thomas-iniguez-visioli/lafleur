@@ -76,7 +76,7 @@ router.get('/contact', function(req, res, next) {
 });
 router.post('/contact', function(req, res, next) {
   console.log(req.body)
-  fs.appendFileSync("./contact",`[${req.body.mail}]:${req.body.message}`)
+  fs.appendFileSync("./contact",`[${req.body.mail}]:${req.body.message}\n`)
   res.redirect("/")
 });
 
