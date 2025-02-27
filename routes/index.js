@@ -1,6 +1,12 @@
 var express = require('express');
 var router = express.Router();
 const fs=require("fs")
+const rateLimit = require('express-rate-limit');
+const limiter = rateLimit({
+   windowMs: 15 * 60 * 1000, // 15 minutes
+   max: 100 // limit each IP to 100 requests per windowMs
+});
+router.use(limiter);
 const page =[
   {
   link:"/bulbe",name:"Bulbe"
@@ -70,14 +76,11 @@ router.get('/', function(req, res, next) {
     prix:8
   }
 ]});
-});
-router.get('/contact', function(req, res, next) {
+});router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'page de contact', users:page });
-});
-router.post('/contact', function(req, res, next) {
+});router.post('/contact', function(req, res, next) {
   console.log(req.body)
   fs.appendFileSync("./contact",`[${req.body.mail}]:${req.body.message}\n`)
   res.redirect("/")
 });
-
 module.exports = router;
