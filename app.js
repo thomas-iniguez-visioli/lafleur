@@ -9,6 +9,29 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 const ejs=require("ejs")
+var session = require('express-session');
+var mysql = require('mysql');
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  app.db=con
+});
+var FileStore = require('session-file-store')(session);
+var fileStoreOptions = {};
+ 
+app.use(session({
+  key: 'session_cookie_name',
+  secret: 'session_cookie_secret',
+  store: new FileStore(fileStoreOptions),
+  resave: true,
+  saveUninitialized: true
+}))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', (path, data, cb) => {
