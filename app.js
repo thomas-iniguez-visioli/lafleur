@@ -31,9 +31,16 @@ app.use(session({
   secret: 'session_cookie_secret',
   store: new FileStore(fileStoreOptions),
   resave: true,
-  saveUninitialized: true
-}));
+
+  saveUninitialized: true,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true
+  }
+}))
+
 app.use(lusca.csrf());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', (path, data, cb) => {
