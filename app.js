@@ -30,7 +30,11 @@ app.use(session({
   secret: 'session_cookie_secret',
   store: new FileStore(fileStoreOptions),
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true
+  }
 }))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
