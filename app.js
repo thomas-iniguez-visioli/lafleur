@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var lusca = require('lusca');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -31,7 +32,8 @@ app.use(session({
   store: new FileStore(fileStoreOptions),
   resave: true,
   saveUninitialized: true
-}))
+}));
+app.use(lusca.csrf());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', (path, data, cb) => {
