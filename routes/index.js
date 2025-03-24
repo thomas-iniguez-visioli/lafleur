@@ -16,10 +16,13 @@ const page =[
   link:"/rosiers",name:"Rosiers"
 }
 ]
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log(req.app.db)
   res.render('index', { title: 'Express', users:page });
 });router.get('/bulbe', function(req, res, next) {
+  console.log("les paramètre sont :"+JSON.stringify(req.params))
   res.render('bulbe', { title: 'Express', users:page,produit:[
   {
     photo:"/images/bulbes_begonia.jpg",

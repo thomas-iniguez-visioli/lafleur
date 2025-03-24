@@ -10,11 +10,11 @@ var usersRouter = require('./routes/users');
 var app = express();
 const ejs=require("ejs")
 var session = require('express-session');
-var mysql = require('mysql');
+var mysql = require('mysql2');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root"
+  password: "root",database:"lafleur"
 });
 
 con.connect(function(err) {
