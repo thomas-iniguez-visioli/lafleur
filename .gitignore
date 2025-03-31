@@ -1,3 +1,28 @@
-node_modules\*
+# NPM packages folder.
+node_modules
 
-node_modules/.package-lock.json
+# Build files
+dist/
+
+# lock files
+yarn.lock
+package-lock.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# node-waf configuration
+.lock-wscript
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Jest Coverage
+coverage
+
+.history/
