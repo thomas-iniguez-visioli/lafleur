@@ -27,7 +27,16 @@
             <input type="text" name="message" id="message">
             <input type="submit">
           </form>
-            
+            <script>var email = document.getElementById("mail");
+
+              email.addEventListener("keyup", function (event) {
+                if (email.validity.typeMismatch) {
+                  email.setCustomValidity("J'attends un e-mail, mon cher !");
+                } else {
+                  email.setCustomValidity("");
+                }
+              });
+              </script>
         </div>
         <%- include('./footer.html'); %>
     </body>
