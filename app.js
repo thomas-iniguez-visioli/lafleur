@@ -9,20 +9,81 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.page=[]
+app.produit={}
 const ejs=require("ejs")
 var session = require('express-session');
-var mysql = require('mysql2');
+var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "root",database:"lafleur"
 });
-
+app.db=con
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  app.db=con
+  if (app.page.length == 0) {
+    con.query(
+      { sql: "SELECT * FROM `categorie` " },
+      function (error, results, fields) {
+        console.log(
+          "les donnée sont :" +
+            error +
+            "\n" +
+            JSON.stringify(results, null, 2) 
+        );
+        results.map((item, i) => {
+          app.page[i] = {
+            link: `/produit/${item.cat_libelle}`,
+            name: item.cat_libelle,
+            data: item.cat_code,
+          };
+          app.produit[item.cat_libelle] = [];
+         
+          return {
+            link: `/app.produit/${item.cat_libelle}`,
+            name: item.cat_libelle,
+          };
+        });
+      }
+    );
+    
+  }
+  
 });
+
+   app.updatedb=()=>{
+    app.page.map((item)=>{
+      console.log(item)
+      console.log(app.page)
+      app.produit[item.cat_libelle]=[]
+      if (app.produit[item.name].length == 0) {
+        app.db.query(
+          { sql: "SELECT * FROM `produit` WHERE pdt_categorie = \"" + item.data+"\"" },
+          function (error, results, fields) {
+            console.log(
+              "les donnée sont :" +
+                error +
+                "\n" +
+                JSON.stringify(results, null, 2) 
+                
+            );
+            results.map((ite, i) => {
+              console.log(ite)
+              app.produit[item.name][i] = ite;
+              return {
+                link: `/${item.cat_libelle}`,
+                name: item.cat_libelle,
+              };
+            });
+          }
+        );
+      }
+    })
+   }
+  
+
 var FileStore = require('session-file-store')(session);
 var fileStoreOptions = {};
  
@@ -53,7 +114,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.updatedb()
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

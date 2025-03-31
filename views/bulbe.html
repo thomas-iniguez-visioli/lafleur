@@ -24,7 +24,7 @@
                 <table>
                     <td>photo</td><td>reférence</td><td>Désignation</td><td>prix</td>
                     <%for(var i=0;i<produit.length;i++){%>
-                    <tr><td><img src="<%= produit[i].photo %>"> </td><td><%= produit[i].reference %></td><td><%= produit[i].designation %></td><td><%= produit[i].prix %></td></tr><%}%>
+                    <tr><td><img src="/images/<%= produit[i].pdt_image %>"> </td><td><%= produit[i].pdt_ref %></td><td><%= produit[i].pdt_designation %></td><td><%= produit[i].pdt_prix %></td></tr><%}%>
                     </table>
             </div>
             <%- include('./footer.html'); %>

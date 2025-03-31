@@ -1,0 +1,72 @@
+{
+  "Bulbes": [
+    {
+      "pdt_ref": "b01",
+      "pdt_designation": "3 bulbes de bégonias",
+      "pdt_prix": 5,
+      "pdt_image": "bulbes_begonia.jpg",
+      "pdt_categorie": "bul"
+    },
+    {
+      "pdt_ref": "b02",
+      "pdt_designation": "10 bulbes de dahlias",
+      "pdt_prix": 12,
+      "pdt_image": "bulbes_dahlia.jpg",
+      "pdt_categorie": "bul"
+    },
+    {
+      "pdt_ref": "b03",
+      "pdt_designation": "50 glaeuls",
+      "pdt_prix": 9,
+      "pdt_image": "bulbes_glaieul",
+      "pdt_categorie": "bul"
+    }
+  ],
+  "Plantes à massif": [
+    {
+      "pdt_ref": "m01",
+      "pdt_designation": "Lot de 3 marguerites",
+      "pdt_prix": 5,
+      "pdt_image": "massif_marguerite.jpg",
+      "pdt_categorie": "mas"
+    },
+    {
+      "pdt_ref": "m02",
+      "pdt_designation": "Pour un bouquet de 6 pensées",
+      "pdt_prix": 6,
+      "pdt_image": "massif_pensee.jpg",
+      "pdt_categorie": "mas"
+    },
+    {
+      "pdt_ref": "m03",
+      "pdt_designation": "Mélange varié de 10 plantes à massif",
+      "pdt_prix": 15,
+      "pdt_image": "massif_melange.jpg",
+      "pdt_categorie": "mas"
+    }
+  ],
+  "Rosiers": [
+    {
+      "pdt_ref": "r01",
+      "pdt_designation": "1 pied spécial grandes fleurs",
+      "pdt_prix": 20,
+      "pdt_image": "rosiers_gdefleur.jpg",
+      "pdt_categorie": "ros"
+    },
+    {
+      "pdt_ref": "r02",
+      "pdt_designation": "Une variété sélectionnée pour son parfum",
+      "pdt_prix": 9,
+      "pdt_image": "rosiers_parfum.jpg",
+      "pdt_categorie": "ros"
+    },
+    {
+      "pdt_ref": "r03",
+      "pdt_designation": "Rosier arbuste",
+      "pdt_prix": 8,
+      "pdt_image": "rosiers_arbuste.jpg",
+      "pdt_categorie": "ros"
+    }
+  ],
+  "undefined": []
+}
