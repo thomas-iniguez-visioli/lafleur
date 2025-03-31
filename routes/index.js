@@ -42,6 +42,7 @@ router.post("/contact", function (req, res, next) {
   console.log(req.session.id);
   if(req.body.message.length<10){
     res.redirect("/contact")
+    return
   }
   fs.appendFileSync(
     "./contact",
