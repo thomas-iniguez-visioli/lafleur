@@ -91,7 +91,7 @@ app.use(session({
   key: 'session_cookie_name',
   secret: 'session_cookie_secret',
   store: new FileStore(fileStoreOptions),
-  resave: true,
+  resave: false,
 
   saveUninitialized: true,
   cookie: {
@@ -100,7 +100,7 @@ app.use(session({
   }
 }))
 
-app.use(lusca.csrf());
+//app.use(lusca.csrf());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

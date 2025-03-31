@@ -22,13 +22,20 @@
            
           <form action="/contact"method="POST">
             <p>votre mail</p>
-            <input type="email" name="mail" id="mail">
+            <input type="email" name="mail" id="mail" required>
             <p>votre message</p>
-            <input type="text" name="message" id="message">
+            <input type="text" name="message" id="message"required>
             <input type="submit">
           </form>
             <script>var email = document.getElementById("mail");
-
+              var message =document.getElementById("message")
+              message.addEventListener("keyup", function (event) {
+                if (email.textContent.length<10) {
+                  message.setCustomValidity("trop court");
+                } else {
+                  message.setCustomValidity("");
+                }
+              });
               email.addEventListener("keyup", function (event) {
                 if (email.validity.typeMismatch) {
                   email.setCustomValidity("J'attends un e-mail, mon cher !");

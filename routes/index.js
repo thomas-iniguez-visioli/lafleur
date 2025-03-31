@@ -40,6 +40,9 @@ router.get("/contact", function (req, res, next) {
 router.post("/contact", function (req, res, next) {
   console.log(req.body);
   console.log(req.session.id);
+  if(req.body.message.length<10){
+    res.redirect("/contact")
+  }
   fs.appendFileSync(
     "./contact",
     `[${req.body.mail}:(${req.session.id})]:${req.body.message}\n`
