@@ -119,16 +119,20 @@ const fs =require("fs")
 /**
  * Get port from environment and store in Express.
  */
+const net=require("net")
+const bl=new net.BlockList()
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-
+app.blocklist=bl
+app.BlockList=bl
 /**
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
-
+server.blocklist=bl
+console.log(server)
 /**
  * Listen on provided port, on all network interfaces.
  */

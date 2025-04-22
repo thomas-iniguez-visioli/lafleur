@@ -19,7 +19,9 @@
                        <% }); %>
                 
             </div>
-           
+           <% if(typeof message!=="undefined"){%>
+            <h1><%-message  %></h1>
+            <%}%>
           <form action="/contact"method="POST">
             <p>votre mail</p>
             <input type="email" name="mail" id="mail" required>
@@ -30,7 +32,8 @@
             <script>var email = document.getElementById("mail");
               var message =document.getElementById("message")
               message.addEventListener("keyup", function (event) {
-                if (email.textContent.length<10) {
+                console.log(message.value.length)
+                if (message.value.length<10) {
                   message.setCustomValidity("trop court");
                 } else {
                   message.setCustomValidity("");

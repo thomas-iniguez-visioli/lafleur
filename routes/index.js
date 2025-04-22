@@ -4,8 +4,16 @@ const fs = require("fs");
 const rateLimit = require("express-rate-limit");
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  max: 2000, // limit each IP to 100 requests per window
+  handler: (req, res, next, options) =>{
+    console.log(req.ip.split(":")[req.ip.split(":").length-1])
+    req.app.blocklist.addAddress(req.ip.split(":")[req.ip.split(":").length-1])
+    req.app.blocklist.saveToFile()
+    res.status(options.statusCode).send(options.message)
+  }
+		
 });
+
 router.use(limiter);
 
 /* GET home app.page. */
@@ -34,20 +42,28 @@ router.get("/produit/:fleur", function (req, res, next) {
     produit: req.app.produit[req.params.fleur],
   });
 });
+var errormsg=""
 router.get("/contact", function (req, res, next) {
-  res.render("contact", { title: "app.page de contact", users: req.app.page });
+  res.render("contact", { title: "app.page de contact", users: req.app.page,message:errormsg });
 });
+
 router.post("/contact", function (req, res, next) {
-  console.log(req.body);
-  console.log(req.session.id);
-  if(req.body.message.length<10){
-    res.redirect("/contact")
-    return
+  try {
+    console.log();
+    console.log(req.session.id);
+    if(req?.body?.message.length<10){
+      res.redirect("/contact")
+      errormsg="texte trop court "
+      return
+    }
+    fs.appendFileSync(
+      "./contact",
+      `[${req.body.mail}:(${req.session.id})]:${req.body.message}\n`
+    );
+    res.redirect("/");
+  } catch (error) {
+    console.log(error)
   }
-  fs.appendFileSync(
-    "./contact",
-    `[${req.body.mail}:(${req.session.id})]:${req.body.message}\n`
-  );
-  res.redirect("/");
+
 });
 module.exports = router;
