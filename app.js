@@ -7,10 +7,13 @@ var lusca = require('lusca');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const net=require("net")
+const bl=new net.BlockList()
 
-var app = express();
+var app = express({BlockList:bl});
 app.page=[]
 app.produit={}
+
 const ejs=require("ejs")
 var session = require('express-session');
 var mysql = require('mysql');
@@ -21,56 +24,69 @@ var con = mysql.createConnection({
 });
 app.db=con
 con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  if (app.page.length == 0) {
-    con.query(
-      { sql: "SELECT * FROM `categorie` " },
-      function (error, results, fields) {
-        console.log(
-          "les donnée sont :" +
-            error +
-            "\n" +
-            JSON.stringify(results, null, 2) 
-        );
-        results.map((item, i) => {
-          app.page[i] = {
-            link: `/produit/${item.cat_libelle}`,
-            name: item.cat_libelle,
-            data: item.cat_code,
-          };
-          app.produit[item.cat_libelle] = [];
-         
-          return {
-            link: `/app.produit/${item.cat_libelle}`,
-            name: item.cat_libelle,
-          };
-        });
-      }
-    );
-    
-  }
+
+   
   
 });
+  app.updatepage=()=>{
+    return new Promise((resolve, reject) => {
+      try {
+        con.query(
+          { sql: "SELECT * FROM `categorie` " },
+          function (error, results, fields) {
+           /* console.log(
+              "les donnée sont :" +
+                error +
+                "\n" +
+                JSON.stringify(results, null, 2) 
+            );*/
+            results.forEach((item, i) => {
+              app.page[i] = {
+                link: `/produit/${item.cat_libelle}`,
+                name: item.cat_libelle,
+                data: item.cat_code,
+              };
+              app.produit[item.cat_libelle] = [];
+             
+              return {
+                link: `/app.produit/${item.cat_libelle}`,
+                name: item.cat_libelle,
+              };
+            });
+            resolve()
+          }
+        );
+        
+      } catch (error) {
+        reject(error)
+      }
+    
 
-   app.updatedb=()=>{
-    app.page.map((item)=>{
-      console.log(item)
-      console.log(app.page)
+    })
+   
+    
+  
+  }
+  app.updateproduit=()=>{
+    return new Promise((resolve, reject) => {
+      try {
+    app.page.forEach((item)=>{
+      //console.log(item)
+     // console.log(app.page)
       app.produit[item.cat_libelle]=[]
       if (app.produit[item.name].length == 0) {
         app.db.query(
           { sql: "SELECT * FROM `produit` WHERE pdt_categorie = \"" + item.data+"\"" },
           function (error, results, fields) {
-            console.log(
+           /* console.log(
               "les donnée sont :" +
                 error +
                 "\n" +
-                JSON.stringify(results, null, 2) 
+                JSON.stringify(results, null, 2) );**/
                 
-            );
+            
             results.map((ite, i) => {
-              console.log(ite)
+             // console.log(ite)
               app.produit[item.name][i] = ite;
               return {
                 link: `/${item.cat_libelle}`,
@@ -80,6 +96,18 @@ con.connect(function(err) {
           }
         );
       }
+    })
+    resolve()
+  } catch (error) {
+    reject(error)
+  }
+
+
+})
+  }
+   app.updatedb=()=>{
+    app.updatepage().then(()=>{
+      app.updateproduit()
     })
    }
   
