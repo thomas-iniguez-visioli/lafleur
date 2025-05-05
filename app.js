@@ -19,7 +19,7 @@ var session = require('express-session');
 var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
-  user: "root",
+  user: "phpmyadmin",
   password: "root",database:"lafleur"
 });
 app.db=con
