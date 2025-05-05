@@ -26,7 +26,7 @@ app.db=con
 con.connect(function(err) {
 
    
-  
+  console.log(err)
 });
   app.updatepage=()=>{
     return new Promise((resolve, reject) => {

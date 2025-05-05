@@ -18,7 +18,7 @@
                         <a href="<%-user.link  %>"><h2><%-user.name  %></h2></a>
                        <% }); %>
                 
-            </div>
+            </div> <div class="page">
            <% if(typeof message!=="undefined"){%>
             <h1><%-message  %></h1>
             <%}%>
@@ -33,7 +33,7 @@
               var message =document.getElementById("message")
               message.addEventListener("keyup", function (event) {
                 console.log(message.value.length)
-                if (message.value.length<10) {
+                if (message.value.length<1) {
                   message.setCustomValidity("trop court");
                 } else {
                   message.setCustomValidity("");
@@ -47,6 +47,8 @@
                 }
               });
               </script>
+              
+            </div>
         </div>
         <%- include('./footer.html'); %>
     </body>
